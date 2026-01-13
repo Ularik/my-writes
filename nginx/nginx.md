@@ -1,12 +1,12 @@
-sudo vim /etc/nginx/sites-available/==core== - core is name of your file configuration:
+sudo nano /etc/nginx/sites-available/fishing - core is name of your file configuration:
 
 ```
 server {
     listen 80;    # http port
-    server_name 10.100.191.8 _;    # ip server or domain    
+    server_name 10.100.191.13;    # ip server or domain    
 
 	location / {
-        proxy_pass http://unix:/run/cert.sock;  
+        proxy_pass http://unix:/run/fishing.sock;  
         proxy_set_header Host $host;    # default headers config
         proxy_set_header X-Real-IP $remote_addr;    # default headers config
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -15,20 +15,20 @@ server {
 
     location /favicon.ico { access_log off; log_not_found off; }
     location /static/ {              # 'static/assets/css...'
-        alias /home/ular/certular/static/;    # your core directory
+        alias /home/kuba/fish/fishing/app/static/;    # your 
     }
     location /media/ {
-        alias /home/ular/certular/media/;
+        alias /home/kuba/fish/fishing/media;
     }
 
 	location /socket {
 		include proxy_params;
-		proxy_pass http://unix:/run/cert.sock;
+		proxy_pass http://unix:/run/fishing.sock;
 	}
 }
 
 ```
-sudo vim /etc/nginx/nginx.conf:
+sudo nano /etc/nginx/nginx.conf:
 ```
 user ular    # change user
 ...
@@ -40,7 +40,7 @@ http {
 ```
 
 ```
-sudo ln -s /etc/nginx/sites-available/core /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/fishing /etc/nginx/sites-enabled
 sudo nginx -t
 sudo systemctl restart nginx
 sudo ufw delete allow 8000

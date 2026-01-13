@@ -10,7 +10,7 @@ psql -U <my_ular> -d <my_database_manga> - exec to database as user
 Создайте базу данных с помощью следующей команды SQL:
 
 ```sql
-CREATE DATABASE cert_gov;
+CREATE DATABASE connector;
 ```
 
 Здесь **`mydatabase`** - это имя вашей базы данных, вы можете выбрать любое имя.
@@ -26,11 +26,11 @@ CREATE USER ular WITH ENCRYPTED PASSWORD 'admin';
 Дайте пользователю все необходимые права на базу данных с помощью следующей команды SQL:
 
 ```sql
-GRANT ALL PRIVILEGES ON DATABASE cert_gov TO ular;
+GRANT ALL PRIVILEGES ON DATABASE connector TO ular;
 ```
 
 ```sql
-ALTER DATABASE cert_gov OWNER TO ular;
+ALTER DATABASE connector OWNER TO ular;
 ```
 
 Это предоставит пользователю **`myuser`** полные права доступа к **`mydatabase`**.

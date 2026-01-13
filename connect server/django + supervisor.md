@@ -8,7 +8,7 @@ sudo apt install python3-venv python3-dev libpq-dev postgresql postgresql-contri
 ### Creating the PostgreSQL Database and User :
  ```
  sudo -u postgres psql
- CREATE DATABASE cert_gov;
+ CREATE DATABASE truck;
  CREATE USER ular WITH PASSWORD 'admin';
  ALTER ROLE ular SET client_encoding TO 'utf8';
  ALTER ROLE ular SET default_transaction_isolation TO 'read committed';

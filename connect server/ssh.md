@@ -3,7 +3,7 @@
 sudo apt update
 sudo apt-get install ssh
 sudo apt install openssh-server
-sudo systemctl enable sshd
+sudo systemctl enable ssh
 ```
 
 

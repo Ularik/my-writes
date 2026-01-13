@@ -1,0 +1,79 @@
+
+```
+npm init -y
+npm i typescript
+npx tsc --init
+npm i nodemon
+```
+
+tsconfig file
+```
+{
+
+  // Visit https://aka.ms/tsconfig to read more about this file
+
+  "compilerOptions": {
+    // File Layout
+    // "rootDir": "./src",
+    // "outDir": "./dist",
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+
+    "module": "es2022",
+    "target": "esnext",
+    "types": [],
+    // For nodejs:
+    // "lib": ["esnext"],
+    // "types": ["node"],
+    // and npm install -D @types/node
+
+  
+    // Other Outputs
+    "sourceMap": false,
+    "declaration": false,
+    "declarationMap": false,
+    "noEmitOnError": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+  
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+    // Recommended Options
+
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+  }
+}
+```
+
+Настройки nodemon.json
+1. Создаем файл nodemon.json
+```
+{
+  "ignore": ["node_modules"],
+  "exec": "npm run build",
+  "ext": "ts"
+}
+```
+
+Настройка package.json
+```
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon"
+  },
+```

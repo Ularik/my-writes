@@ -2,6 +2,9 @@
  git config --global user.name <'name'> - add username
  git config --local user.email <'email'> - add username only this repo
 
+### Reset hard
+git reset --hard origin/main
+
 ### Check git loocked file
 ```
 git ls-files - view all loocked files

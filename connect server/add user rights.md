@@ -15,8 +15,10 @@ adduser имя_пользователя - create user
 useradd -h - check all options
 passwd ular - create password
 vim /etc/passwd - check all users
-usermod -aG sudo username - give sudo rights 
+usermod -aG sudo ular - give sudo rights 
 sudo whoami - check has you got sudo rights
+sudo usermod -aG www-data ular    # добавить (append), а не заменить существующие группы.
+
 sudo usermod -g 'www-data' -G sudo,www-data,ular    # add new group
 
 - ls -l   - check all directories with their rights
