@@ -7,6 +7,9 @@ alembic init src/migrations
 Открываем alembic.ini и меняем строку:
 ```
 prepend_sys_path = . src
+
+# раскомментируй 14 строка
+file_template = %%(year)d_%%(month).2d_%%(day).2d_%%(hour).2d%%(minute).2d-%%(rev)s_%%(slug)s
 ```
 
 Открываем файл env.py и добавляем:
@@ -41,6 +44,9 @@ alembic revision --autogenerate -m "Initial migration"
 alembic upgrade head
 ```
 
+```
+alembic downgrade -1
+```
 
 ### PEP 8 ADD
 

@@ -1,0 +1,36 @@
+
+peermit.ts
+
+```
+import { NextFunction, Request, Response } from "express";
+import { RequestWithUser } from "./auth";
+
+  
+const permit = (...roles: string[]) => {
+  return (expressReq: Request, res: Response, next: NextFunction) => {
+    const req = expressReq as RequestWithUser;
+
+    if (!req.user) {
+      return res.status(401).send({ message: "Unauthenticated" });
+    }
+
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).send({ message: "You dont have rights" });
+    }
+
+    next();
+  };
+};
+
+export default permit;
+```
+
+#### use
+```
+artistsRouter.delete(
+"/:id", 
+auth, 
+permit('admin'), # add roles who can use this router
+async (req, res) => {
+}
+```

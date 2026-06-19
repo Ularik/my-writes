@@ -30,26 +30,56 @@ npx tsc --init
 ```
 
 
+**Для httponly coockeis**
 ```
-import express from 'express';
+npm install cookie-parser
+npm install --save-dev @types/cookie-parser
+npm i dotenv
+npm install --save mongoose
+npm install --save cors
+npm install --save -D @types/cors
+```
 
-import productsRouter from "./routers/products";
+
+```
+import dotenv from "dotenv";
+dotenv.config();
+
+
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import usersRouter from "./routes/users";
+import config from "./config";
+import cookieParser from "cookie-parser";
 
   
-
 const app = express();
-app.use(express.json());   # возможность парсить json запросы
-const port = 8000;
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+);
 
   
-
-app.use('/products', productsRouter);
-
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.static(config.publicPath));
+const port = 8001;
   
+app.use("/users", usersRouter);
+const run = async () => {
+  await mongoose.connect(config.db);
+  app.listen(port, () => {
+    console.log(`Server started on ${port} port!`);
+  });
 
-app.listen(port, () => {
+  process.on("exit", () => {
+    mongoose.disconnect();
+  });
+};
 
-  console.log(`Server started on ${port} port!`);
-
-});
+run().catch((err) => console.error(err));
 ```

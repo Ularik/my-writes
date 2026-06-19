@@ -53,7 +53,7 @@ messagesRouter.post("/", imagesUpload.single("image"), async (req, res) => {
   const message: MessageMutation = {
     author: req.body.author,
     text: req.body.text,
-    image: req.file ? req.file.filename : null,
+    image: req.file ? 'images/' + req.file.filename : null,
   };
   await filedb.addMessage(message);
   res.status(201).send("Success create new Product");
@@ -66,7 +66,7 @@ messagesRouter.post("/", imagesUpload.single("image"), async (req, res) => {
 ```
 productsRouter.post(
   "/",
-  imagesUpload.single("image"),
+  imagesUpload.array("image"),
   async (req: Request, res: Response, next) => {
   const files = req.files as Express.Multer.File[];
 

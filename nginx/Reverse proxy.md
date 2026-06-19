@@ -31,7 +31,7 @@ server {
 
 ```
 1. listen 80;   # http port который будет прослушиваться reverse proxy сервером
-2. server_name site1.local;   # поддомен который мы зарегистрировали когда покупали домен у DNS
+2. server_name site1.local;   # поддомен который мы зарегистрировали когда покупали домен у DNS, сюда пойдет все что идет на site1.local и передаваться в 10.100.191.8:80
 3. proxy_pass http://10.100.191.7:80;   # это путь на который будет направляться запрос, его нет в интернете, он локально доступен для прокси сервера в одной подсети
 4. proxy_set_header Host $host; # транслирует название Host (Например site1.local на адресс proxy_pass)
 Можем создать второй файл (Например: "/etc/nginx/conf.d/site2.conf") или там же добавить блок:
@@ -56,6 +56,10 @@ server {
 
 ```
 server {
+   set_real_ip_from 10.100.191.9;      # доверяем прокси и получаем реальный ip откуда идёт запрос, а не ip проксишки, если убрать, то будет всегда 10.100.191.9
+   
+   real_ip_header X-Forwarded-For;  # доверяем прокси и получаем реальный ip
+
     listen 80;    # http port
     server_name site1.local;  # пишем название домена, который будет передаваться через Host: site1.local в нашем случае
 
@@ -145,3 +149,61 @@ server {
     }
 }
 
+
+
+### Пример с базой киберугроз
+
+```
+server {
+   set_real_ip_from 10.100.191.9;      # доверяем прокси
+   real_ip_header X-Forwarded-For;
+
+    listen 80;
+    server_name base.cert.gov.kg;
+
+    # 1. Раздача статики Frontend (React SPA)
+    location / {
+        root /usr/share/nginx/html;
+        index index.html;
+        # Эта строчка критически важна для React Router:
+        # Если файл не найден, Nginx отдаст index.html, и роутинг отработает на фронте
+        try_files $uri $uri/ /index.html;
+    }
+
+    location ^~ /api/docs {
+        # Если нужно полностью закрыть для всех:
+#        return 403;
+
+        # А ЕСЛИ нужно оставить доступ только для вашего офисного IP 10.100.191.7,
+        # то вместо "return 403;" раскомментируйте строки ниже:
+         allow 10.100.123.26;
+         allow 192.168.100.67;
+         deny all;
+         proxy_pass http://django_app:8000;
+         proxy_set_header Host $host;
+         proxy_set_header X-Real-IP $remote_addr;
+         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+         proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 2. Проксирование API и Админки на Django (Gunicorn)
+    # Все запросы, начинающиеся с /api/ или /admin/, полетят в бэкенд
+    location ~ ^/(api|admin) {
+        proxy_pass http://django_app:8000;        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 3. Раздача статики Backend (Django)
+    location /static/ {
+        alias /usr/www/app/static/;
+    }
+
+    # 4. Раздача медиа файлов (пользовательские загрузки)
+    location /media/ {
+        alias /usr/www/app/media/;
+    }
+}
+
+```

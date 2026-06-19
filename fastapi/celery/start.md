@@ -56,3 +56,20 @@ async def post_facilities(
     await db.save()  
     return facilities
 ```
+### Запуск
+
+```
+celery -A src.tasks.celery_app:celery_instance worker -l INFO --pool=solo
+
+```
+
+- `src.tasks.celery_app` - путь до места, где лежит объект класса `celery_instance`
+- `worker` - что именно запускаем
+- `-l INFO` - уровень логов
+- `--pool=solo` - пул потоков, обязательно при запуске в Windows
+
+Запуск Celery beat:
+
+```python
+celery -A src.tasks.celery_app:celery_instance beat -l INFO
+```
