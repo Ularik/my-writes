@@ -1,11 +1,13 @@
 
 ```
 npx create-next-app@latest my-app --yes
+cd my-app
 ```
 
 ### Shadcn
 ```
 npm i shadcn
+npm install lucide-react
 ```
 
 ## Tanstack query
