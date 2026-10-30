@@ -66,7 +66,6 @@ conf t
 interface gig
 interface gigabitEthernet ?
 Switch(config)#interface gigabitEthernet 0/1
-Switch(config-if)#switchport mode trunk ?
 Switch(config-if)#switchport mode trunk
 Switch(config-if)#switchport trunk allowed ?
 Switch(config-if)#switchport trunk allowed vlan ?
