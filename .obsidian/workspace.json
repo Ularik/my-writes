@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "79606d0996e8d9f8",
+        "id": "43aa2ead9002453e",
         "type": "tabs",
         "children": [
           {
-            "id": "2862c6e4bbab242d",
+            "id": "3c1b97f3543e62c4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cisco pocket/маршрутизация/NAT.md",
+                "file": "cisco pocket/маршрутизация/ASA фаервол/DMZ.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NAT"
+              "title": "DMZ"
             }
           }
         ]
@@ -174,45 +174,50 @@
       "bases:Создать новую базу": false
     }
   },
-  "active": "2862c6e4bbab242d",
+  "active": "3c1b97f3543e62c4",
   "lastOpenFiles": [
-    "cisco pocket/маршрутизация/Маршрутизатор.md",
-    "cisco pocket/маршрутизация/DHCP/DHCP.md",
+    "cisco pocket/маршрутизация/ASA фаервол/ASA.md",
+    "cisco pocket/маршрутизация/ASA фаервол/DMZ.md",
     "cisco pocket/маршрутизация/NAT.md",
-    "cisco pocket/маршрутизация/Коммутатор с Маршрутизатором.md",
-    "cisco pocket/маршрутизация/Коммутатор 3 уровня L3560.md",
-    "cisco pocket/маршрутизация/Коммутатор 3 уровня к маршрутизатору.md",
-    "cisco pocket/маршрутизация/DHCP/DHCP на коммутаторе 3.md",
-    "cisco pocket/команды.md",
-    "cisco pocket/Режимы конфигурирования.md",
-    "cisco pocket/разделение на vlan/Создание vlan 2 и разделение на vlan.md",
-    "cisco pocket/подклчение и настройка комм/Настройка ip адресса коммутатора.md",
+    "cisco pocket/маршрутизация/Access list/acceess-list comands.md",
+    "cisco pocket/маршрутизация/ASA фаервол",
+    "cisco pocket/маршрутизация/Access list/Блокировка входящего трафика внутрь.md",
+    "Заметки.md",
+    "python -m.md",
+    "Untitled.base",
+    "vmware.md",
+    "Безопасность/Проверка безопасности.md",
+    "Безопасность",
+    "Коммутатор с.md",
+    "Pasted image 20261104161650.png",
+    "cisco pocket/подклчение и настройка комм/Настройка VTY.md",
     "cisco pocket/подклчение и настройка комм/Включить авторизацию при подключении к коммутатору.md",
+    "cisco pocket/подклчение и настройка комм/Настройка ip адресса коммутатора.md",
+    "cisco pocket/Режимы конфигурирования.md",
+    "cisco pocket/маршрутизация/Access list",
+    "cisco pocket/маршрутизация/DHCP/DHCP.md",
+    "cisco pocket/маршрутизация/Динамическая маршр. EIGRP.md",
+    "cisco pocket/маршрутизация/Динамическая маршр. OSPF.md",
+    "cisco pocket/маршрутизация/Коммутатор 3л как маршрутизатор.md",
+    "cisco pocket/маршрутизация/Коммутат + Маршрут",
+    "cisco pocket/маршрутизация/Коммутат + Маршрут/Коммутатор 3 уровня к маршрутизатору.md",
+    "cisco pocket/маршрутизация/Маршрутизатор.md",
+    "cisco pocket/маршрутизация/DHCP/DHCP на коммутаторе 3.md",
+    "cisco pocket/маршрутизация/Коммутат + Маршрут/Коммутатор с Маршрутизатором.md",
+    "Pasted image 20261103182212.png",
+    "Pasted image 20261103182209.png",
+    "cisco pocket/разделение на vlan/Создание vlan 2 и разделение на vlan.md",
+    "cisco pocket/команды.md",
     "Pasted image 20261102145814.png",
     "cisco pocket/маршрутизация/DHCP/DHCP + dhcp сервер.md",
     "Pasted image 20261030113944.png",
-    "Коммутатор с.md",
     "cisco pocket/маршрутизация/DHCP",
     "another/git.md",
-    "connect server/django + supervisor.md",
     "cisco pocket/агрегирование",
-    "passwords.md",
-    "Заметки.md",
-    "cisco pocket/агрегирование/Агрегирование соединений.md",
-    "another/passwords.md",
     "cisco pocket/маршрутизация",
-    "PlantUML/Сегментация.md",
-    "PlantUML/База.md",
-    "cisco pocket/агрегирование/Резервирование соединений. Протокол STP и RSTP.md",
     "PlantUML",
-    "Тех задание для ручек панели для центра.md",
-    "Untitled.base",
-    "vmware.md",
-    "Virtual environment/virtualenv.md",
     "Схема VLAN_ два коммутатора и trunk.png",
     "cisco pocket/подклчение и настройка комм",
-    "cisco pocket/разделение на vlan",
-    "cisco pocket",
     "Pasted image 20260406154759.png"
   ]
 }
