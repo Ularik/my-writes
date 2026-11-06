@@ -11,14 +11,14 @@ show version | include VLANs
 
 #### 1. Интерфейс DMZ
 
-Допустим, inside — это Vlan1, outside — Vlan2, а под DMZ берём Vlan3 и порт Ethernet0/2.
+Допустим, inside — это Vlan1, outside — Vlan2, а под DMZ берём Vlan3 и порт Ethernet0/7.
 
 ```
 interface Vlan3
  no forward interface Vlan1      ! только на Base license, ввести ДО nameif
  nameif dmz
  security-level 50
- ip address 192.168.3.1 255.255.255.0
+ ip address 212.212.3.1 255.255.255.1
  no shutdown
 !
 interface Ethernet0/7
